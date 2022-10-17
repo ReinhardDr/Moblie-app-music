@@ -1,11 +1,11 @@
 import React from 'react';
 import { View ,StyleSheet ,Text } from 'react-native';
 
-const playelist = () => {
+const playerlist = () => {
     return (
-        <view style={styles.container}>
-            <text> playelist</text>
-        </view>
+        <View style={styles.container}>
+            <Text> playelist</Text>
+        </View>
     )
 }
 const styles = StyleSheet.create({
@@ -15,5 +15,5 @@ const styles = StyleSheet.create({
         alignContent :'center',
     }
 })
-export default playelist;
+export default playerlist;
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { View ,StyleSheet ,Text } from 'react-native';
+import { View ,StyleSheet , Text } from 'react-native';
 
-const AudioList = () => {
+const player = () => {
     return (
-        <view style={styles.container}>
-            <text> player</text>
-        </view>
+        <View style={styles.container}>
+            <Text> player </Text>
+        </View>
     )
 }
 const styles = StyleSheet.create({
@@ -15,5 +15,5 @@ const styles = StyleSheet.create({
         alignContent :'center',
     }
 })
-export default AudioList;
+export default player;
 

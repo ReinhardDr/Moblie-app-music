@@ -3,9 +3,9 @@ import { View ,StyleSheet ,Text } from 'react-native';
 
 const AudioList = () => {
     return (
-        <view style={styles.container}>
-            <text> AudioList </text>
-        </view>
+        <View style={styles.container}>
+            <Text> AudioList </Text>
+        </View>
     )
 }
 const styles = StyleSheet.create({
