@@ -1,7 +1,7 @@
 import React from 'react';
 import { View ,StyleSheet , Text } from 'react-native';
 
-const player = () => {
+const Player = () => {
     return (
         <View style={styles.container}>
             <Text> player </Text>
@@ -15,5 +15,5 @@ const styles = StyleSheet.create({
         alignContent :'center',
     }
 })
-export default player;
+export default Player;
 
