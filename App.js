@@ -1,9 +1,21 @@
-import react from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import NavigatorApp from "./app/screens/Navigation/NavigatorApp";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App(){
-  return <NavigationContainer>
-      <NavigatorApp/>
-  </NavigationContainer>
+import login from './app/screens/login';
+const stack = createNativeStackNavigator();
+
+const App =() => {
+  return (
+    <NavigationContainer>
+      <stack.Navigator initialRouteName='login' 
+      screenOptions={{headerShown: false}}
+      >
+        <stack.Screen name="login" component={login} />
+      </stack.Navigator>
+    </NavigationContainer>
+    
+  );
 }
+
+export default App;
+
