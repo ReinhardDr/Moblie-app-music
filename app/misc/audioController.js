@@ -1,6 +1,6 @@
 import { storeAudioForNextOpening } from './helper';
 
-// play audio
+// chạy nhạc
 export const play = async (playbackObj, uri, lastPosition) => {
   try {
     if (!lastPosition)
@@ -9,7 +9,7 @@ export const play = async (playbackObj, uri, lastPosition) => {
         { shouldPlay: true, progressUpdateIntervalMillis: 1000 }
       );
 
-    // but if there is lastPosition then we will play audio from the lastPosition
+    // Vị trí cuối 
     await playbackObj.loadAsync(
       { uri },
       { progressUpdateIntervalMillis: 1000 }
@@ -21,7 +21,7 @@ export const play = async (playbackObj, uri, lastPosition) => {
   }
 };
 
-// pause audio
+// func dừng audio
 export const pause = async playbackObj => {
   try {
     return await playbackObj.setStatusAsync({
@@ -32,7 +32,7 @@ export const pause = async playbackObj => {
   }
 };
 
-// resume audio
+// func tiếp tục audio
 export const resume = async playbackObj => {
   try {
     return await playbackObj.playAsync();
@@ -41,7 +41,7 @@ export const resume = async playbackObj => {
   }
 };
 
-// select another audio
+// Chọn nhạc khác 
 export const playNext = async (playbackObj, uri) => {
   try {
     await playbackObj.stopAsync();
@@ -53,16 +53,9 @@ export const playNext = async (playbackObj, uri) => {
 };
 
 export const selectAudio = async (audio, context, playListInfo = {}) => {
-  const {
-    soundObj,
-    playbackObj,
-    currentAudio,
-    updateState,
-    audioFiles,
-    onPlaybackStatusUpdate,
-  } = context;
+  const { soundObj, playbackObj,  currentAudio,  updateState, audioFiles, onPlaybackStatusUpdate, } = context;
   try {
-    // playing audio for the first time.
+    // Chọn bài ban đâu (trong đây là ban đầu á)
     if (soundObj === null) {
       const status = await play(playbackObj, audio.uri, audio.lastPosition);
       const index = audioFiles.findIndex(({ id }) => id === audio.id);
@@ -79,7 +72,7 @@ export const selectAudio = async (audio, context, playListInfo = {}) => {
       return storeAudioForNextOpening(audio, index);
     }
 
-    // pause audio
+    // dừng nhặc
     if (
       soundObj.isLoaded &&
       soundObj.isPlaying &&
@@ -93,7 +86,7 @@ export const selectAudio = async (audio, context, playListInfo = {}) => {
       });
     }
 
-    // resume audio
+    // tiếp tục nhạc
     if (
       soundObj.isLoaded &&
       !soundObj.isPlaying &&
@@ -103,7 +96,7 @@ export const selectAudio = async (audio, context, playListInfo = {}) => {
       return updateState(context, { soundObj: status, isPlaying: true });
     }
 
-    // select another audio
+    // chọn nhạc khác
     if (soundObj.isLoaded && currentAudio.id !== audio.id) {
       const status = await playNext(playbackObj, audio.uri);
       const index = audioFiles.findIndex(({ id }) => id === audio.id);
@@ -178,7 +171,7 @@ export const changeAudio = async (context, select) => {
     let index;
     let status;
 
-    // for next
+    // Tiếp tục button
     if (select === 'next') {
       audio = audioFiles[currentAudioIndex + 1];
       if (!isLoaded && !isLastAudio) {
@@ -203,7 +196,7 @@ export const changeAudio = async (context, select) => {
       }
     }
 
-    // for previous
+    // lùi về back button
     if (select === 'previous') {
       audio = audioFiles[currentAudioIndex - 1];
       if (!isLoaded && !isFirstAudio) {
@@ -238,7 +231,7 @@ export const changeAudio = async (context, select) => {
     });
     storeAudioForNextOpening(audio, index);
   } catch (error) {
-    console.log('error inside cahnge audio method.', error.message);
+    console.log('error inside change audio method.', error.message);
   }
 };
 

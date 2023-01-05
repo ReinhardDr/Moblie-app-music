@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Modal,
-  StatusBar,
-  Text,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { View, StyleSheet, Modal, StatusBar, Text, TouchableWithoutFeedback, } from 'react-native';
 import color from '../misc/color';
 
 const OptionModal = ({

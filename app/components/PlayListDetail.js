@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Modal,
-  FlatList,
-  Text,
-  Dimensions,
-} from 'react-native';
+import {View, StyleSheet, Modal, FlatList, Text, Dimensions, } from 'react-native';
 import { selectAudio } from '../misc/audioController';
 import color from '../misc/color';
 import AudioListItem from './AudioListItem';

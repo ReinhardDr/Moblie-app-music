@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  Dimensions,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { View, StyleSheet, Text, Dimensions, TouchableWithoutFeedback, } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import color from '../misc/color';
 

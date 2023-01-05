@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  StyleSheet,
-  Modal,
-  TextInput,
-  Dimensions,
-  TouchableWithoutFeedback,
-  Text,
-} from 'react-native';
+import { View, StyleSheet, Modal, TextInput, Dimensions, TouchableWithoutFeedback, Text,} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import color from '../misc/color';
 
@@ -28,7 +20,7 @@ const PlayListInputModal = ({ visible, onClose, onSubmit }) => {
     <Modal visible={visible} animationType='fade' transparent>
       <View style={styles.modalContainer}>
         <View style={styles.inputContainer}>
-          <Text style={{ color: color.ACTIVE_BG }}>Create New Playlist</Text>
+          <Text style={{ color: color.ACTIVE_BG }}>Tạo danh sách phát mới</Text>
           <TextInput
             value={playListName}
             onChangeText={text => setPlayListName(text)}

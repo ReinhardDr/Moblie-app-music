@@ -81,16 +81,16 @@ const PlayList = ({ navigation }) => {
 
         updatedList = oldList.filter(list => {
           if (list.id === playList.id) {
-            // we want to check is that same audio is already inside our list or not.
+            // Check cái list chạy chưa.
             for (let audio of list.audios) {
               if (audio.id === addToPlayList.id) {
-                // alert with some message
+                // Cảnh báo song giống nhau 
                 sameAudio = true;
                 return;
               }
             }
 
-            // otherwise update the playlist.
+            // update Ds phát
             list.audios = [...list.audios, addToPlayList];
           }
 
@@ -111,7 +111,7 @@ const PlayList = ({ navigation }) => {
       return AsyncStorage.setItem('playlist', JSON.stringify([...updatedList]));
     }
 
-    // if there is no audio selected then we want open the list.
+    // Báo ở đây có list đây k ?.
     selectedPlayList = playList;
     // setShowPlayList(true);
     navigation.navigate('PlayListDetail', playList);
@@ -140,7 +140,7 @@ const PlayList = ({ navigation }) => {
         onPress={() => setModalVisible(true)}
         style={{ marginTop: 15 }}
       >
-        <Text style={styles.playListBtn}>+ Add New Playlist</Text>
+        <Text style={styles.playListBtn}>+ Thêm danh sách mới</Text>
       </TouchableOpacity>
 
       <PlayListInputModal

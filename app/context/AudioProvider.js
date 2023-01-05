@@ -8,6 +8,7 @@ import { storeAudioForNextOpening } from '../misc/helper';
 import { playNext } from '../misc/audioController';
 export const AudioContext = createContext();
 export class AudioProvider extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +31,7 @@ export class AudioProvider extends Component {
   }
 
   permissionAllert = () => {
-    Alert.alert('Permission Required', 'This app needs to read audio files!', [
+    Alert.alert('Cần cấp quyền , xin hãy chấp nhận', [
       {
         text: 'I am ready',
         onPress: () => this.getPermission(),
@@ -82,14 +83,14 @@ export class AudioProvider extends Component {
 
   getPermission = async () => {
     // {
-    //     "canAskAgain": true,
-    //     "expires": "never",
-    //     "granted": false,
-    //     "status": "undetermined",
+    //     "Hỏi lại": true,
+    //     "Hạn": "never",
+    //     "Cấp phép ": false,
+    //     "Tình trạng": "undetermined",
     //   }
     const permission = await MediaLibrary.getPermissionsAsync();
     if (permission.granted) {
-      //    we want to get all the audio files
+      //    Lấy file trong đây
       this.getAudioFiles();
     }
 
@@ -101,17 +102,17 @@ export class AudioProvider extends Component {
       const { status, canAskAgain } =
         await MediaLibrary.requestPermissionsAsync();
       if (status === 'denied' && canAskAgain) {
-        //   we are going to display alert that user must allow this permission to work this app
+        //   Lệnh bắt người dùng phải tích
         this.permissionAllert();
       }
 
       if (status === 'granted') {
-        //    we want to get all the audio files
+        //    cho phép lấy file
         this.getAudioFiles();
       }
 
       if (status === 'denied' && !canAskAgain) {
-        //   we want to display some error to the user
+        //   lỗi hiện
         this.setState({ ...this.state, permissionError: true });
       }
     }
@@ -158,7 +159,7 @@ export class AudioProvider extends Component {
       }
 
       const nextAudioIndex = this.state.currentAudioIndex + 1;
-      // there is no next audio to play or the current audio is the last
+      // ko có audio last
       if (nextAudioIndex >= this.totalAudioCount) {
         this.state.playbackObj.unloadAsync();
         this.updateState(this, {
@@ -171,7 +172,7 @@ export class AudioProvider extends Component {
         });
         return await storeAudioForNextOpening(this.state.audioFiles[0], 0);
       }
-      // otherwise we want to select the next audio
+      // chọn nhạc khác
       const audio = this.state.audioFiles[nextAudioIndex];
       const status = await playNext(this.state.playbackObj, audio.uri);
       this.updateState(this, {
@@ -222,7 +223,7 @@ export class AudioProvider extends Component {
           }}
         >
           <Text style={{ fontSize: 25, textAlign: 'center', color: 'red' }}>
-            It looks like you haven't accept the permission.
+            Có vẻ bạn chưa cấp quyền.
           </Text>
         </View>
       );

@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AudioList from '../screens/AudioList';
 import Player from '../screens/Player';
 import PlayList from '../screens/PlayList';
-import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons, FontAwesome5,  Entypo  } from '@expo/vector-icons';
 import PlayListDetail from '../screens/PlayListDetail';
 
 const Tab = createBottomTabNavigator();
@@ -24,11 +24,11 @@ const AppNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name='AudioList'
+        name='Danh sách nhạc'
         component={AudioList}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name='headset' size={size} color={color} />
+            <Entypo name="home" size={30} color={color} />
           ),
         }}
       />
@@ -42,11 +42,11 @@ const AppNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='PlayList'
+        name='Danh sách phát'
         component={PlayListScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name='library-music' size={size} color={color} />
+            <MaterialIcons name='playlist-play' size={40} color={color} />
           ),
         }}
       />
